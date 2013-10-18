@@ -1,0 +1,32 @@
+{
+  "name": "angular-route-viewer",
+  "version": "0.0.0",
+  "homepage": "https://github.com/TylerGarlick/angular-route-viewer",
+  "authors": [
+    "Tyler Garlick <tjgarlick@gmail.com>"
+  ],
+  "description": "View all routes inside of angular, like routes help page",
+  "keywords": [
+    "angular",
+    "routes",
+    "help",
+    "page",
+    "ngRoute"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "1.2.0-rc.3",
+    "angular-route": "~1.2.0-rc.3",
+    "bootstrap": "~3.0.0",
+    "lodash": "~2.2.1",
+    "lesshat": "~1.1.2",
+    "angular-bootstrap": "~0.6.0"
+  }
+}

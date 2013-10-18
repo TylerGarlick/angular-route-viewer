@@ -1,0 +1,71 @@
+<html ng-app="angular-route-viewer">
+  <head>
+    <title>Angular Route Helper</title>
+    <link type="text/css" href="angular-router-helper.css" rel="stylesheet"/>
+  </head>
+  <body ng-controller="RouteViewerCtrl">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <h1>Routes</h1></div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <button type="text" class="btn btn-default pull-right">Show All</button>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="form-group">
+            <input type="text" class="form-control input-lg" ng-model="routeFilter" placeholder="Filter Routes"/>
+          </div>
+          <div class="routes">
+            <div class="route" ng-repeat="route in routes | filter:routeFilter">
+              <h2>
+                <div class="well well-sm">
+                  {{ route.originalPath }}
+                </div>
+              </h2>
+              <div class="row" ng-hide="route.collapsed">
+                <div class="col-md-3">
+                  <div class="controller">
+                    <h3>Controller</h3>
+                    <h4 ng-hide="route.controllerAs"><span class="label label-info">{{ route.controller }}</span></h4>
+                    <h4 ng-show="route.controllerAs"><span class="label label-info">{{ route.controller }}</span> as
+                      <span class="label label-danger">{{ route.controllerAs }}</span></h4>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="parameters">
+                    <h3>Url Parameters</h3>
+                    <ul class="list-inline">
+                      <li ng-repeat="key in route.keys">
+                        <h4 ng-show="!key.optional"><span class="label label-danger">{{ key.name }}</span></h4>
+                        <h4 ng-show="key.optional"><span class="label label-default">{{ key.name }}</span></h4>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="regex" ng-show="_.isRegExp(route.regexp)">
+                    <h3>Regular Expression</h3>
+                  </div>
+                </div>
+              </div>
+              <button type="button" class="btn btn-primary" ng-click="toogleCollapsed(route)">{{ route.collapsed ? "Show Details" : "Hide Details" }}</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="bower_components/jquery/jquery.js"></script>
+    <script src="bower_components/lodash/dist/lodash.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+    <script src="angular-route-viewer.js"></script>
+    <script src="demo/bogusAngularModule.js"></script>
+  </body>
+</html>
